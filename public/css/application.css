@@ -7,7 +7,8 @@
 .fixedcontainer {
   margin: 20px auto;
   width: 400px;
-  height: 250px;
+  height: 270px;
+  min-height: 250px;
   padding: 0px 20px 20px 20px;
   border: 1px solid black;
   background-color: white;
@@ -116,12 +117,14 @@ a:hover {
 	margin-left: auto;
 	margin-right: auto;
 	background-color: grey;
-	opacity: 0.7;
+	opacity: 0.8;
 	font-weight: bold;
 	font-family: PT Serif;
 }
 html {
-	background-image: url("http://www.hdwallpapersinn.com/wp-content/uploads/2014/09/golden_gate_bridge_great_sea_wallpaper.jpg");
+	background-image: url("/imgs/ggbridgeold.jpg");
+	background-size: 100%;
+
 }
 #chewy {
 	font-family: Chewy;

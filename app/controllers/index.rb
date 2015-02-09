@@ -45,12 +45,16 @@ end
 
 post '/login' do
 	user = User.find_by(username: params[:username])
-  redirect '/' unless user
+  unless user
+    session[:errors] = true
+    redirect '/login'
+  end
   if user.password == params[:password]
     session[:user_id] = user.id
     redirect '/user'
   else
-    redirect '/'
+    session[:errors] = user.errors.messages
+    redirect '/login'
   end
 end
 
@@ -59,9 +63,16 @@ get "/register" do
   erb :'/user/user_register'
 end
 
+
+
 post "/register" do
-	User.create(params[:user])
-	redirect '/'
+  user = User.create(params[:user])
+  if user.errors.any?
+    session[:errors] = user.errors.messages
+    redirect '/register'
+  else
+    redirect '/login'
+  end
 end
 
 
@@ -112,11 +123,6 @@ post '/user/eta' do
   redirect '/user'
 end
 
-# post '/tweet' do
-#   user = User.find(session[:user_id])
-#   user.tweets.create(description: params[:tweet])
-#   redirect '/user'
-# end
 
 get '/logout' do
   session.delete :user_id
@@ -124,23 +130,16 @@ get '/logout' do
 end
 
 
-# elsif
-#       session[:trans] = nil
-#       Bart::Realtime.etd('BAYF').destinations.map {|d| session[:trans] = 'BAYF' if d.abbr == session[:destination]}
-#       Bart::Realtime.etd('19TH').destinations.map {|d| session[:trans] = '19TH' if d.abbr == session[:destination]}
-#       Bart::Realtime.etd('BALB').destinations.map {|d| session[:trans] = 'BALB' if d.abbr == session[:destination]}
-#       transfer_station = Bart::Realtime.etd(session[:station]).destinations
-#       transfer_station.map do |destination|
-#         if destination.abbr == session[:trans]
-#           destination.estimates.map do |estimate|
-#             session[:eta] << {
-#               minutes: estimate.minutes,
-#               platform: estimate.platform,
-#               direction: estimate.direction,
-#               length: estimate.length,
-#               color: estimate.color,
-#             }
-#           end
-#         end
-#       end
+configure do
+  set :show_exceptions, false
+end
 
+
+not_found do
+  request.path
+end
+
+error do
+  session[:error] = "The Station you Entered Does NOT have a Train going to that Destination!"
+  redirect '/'
+end

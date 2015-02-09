@@ -2,13 +2,15 @@ require 'open-uri'
 require 'nokogiri'
 require_relative '../config/environment.rb'
 
+
+
 module BartS
 
 	BASE_URL = "http://api.bart.gov/api"
 	API_KEY = "MW9S-E7SL-26DU-VV8V"
 
 	module Stations
-		STATIONS = Hash[File.readlines('/Users/apprentice/Desktop/ph2-pA-week-1-passion-project/db/stations.txt').map{|line| [line[0..3],line[4..-1].strip] }]
+		STATIONS = Hash[File.readlines(TXT_FILE).map{|line| [line[0..3],line[4..-1].strip] }]
 
 		extend self
 		def get(abbr) 

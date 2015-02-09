@@ -1,8 +1,8 @@
 <div id="page">
 <div class="header"> 
-  <h4><a class="loginbutton" href="/login">Login</a></h4>
+  <h4><a class="loginbutton" href="/login">login</a></h4>
   <br>
-  <h4><a class="loginbutton" href="/register">Register</a></h4>
+  <h4><a class="loginbutton" href="/register">register</a></h4>
 </div>
 <div class="containerauto">
   <h1 id="chewy">BART: Estimated Time of Arrival</h1>
@@ -50,6 +50,12 @@
 </div>
 
 <div class="containerhidden">
+    <% if session[:error] %>
+      <div class="hidden">
+        <h4 style="color:red"><%= session[:error] %></h4>
+      </div>
+        <%session[:error] = nil%>
+    <% end %>
   <% if session[:eta] %>
   <%session[:eta].each do |eta| %>
     <div class="hidden">

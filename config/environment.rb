@@ -45,3 +45,5 @@ Dir[APP_ROOT.join('app', 'models', '*.rb')].each { |file| require file }
 
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
+
+TXT_FILE = APP_ROOT.join('db', 'stations.txt').to_s

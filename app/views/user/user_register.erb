@@ -5,6 +5,10 @@
 		<h1>Register</h1>
 	  <hr>
   	<div class='login'>
+      <% if session[:errors] %>
+      <p style="color:red"><%= session[:errors][:username].first %></p>
+      <%session[:errors] = nil%>
+      <% end %>
   	<form action='/register' method='post'>
     	<h4>Username: <input type='text' size='30' name='user[username]' placeholder="John Doe"></h4>
     	<h4>Password: <input type='password' size='30' name='user[password]' placeholder="*************"></h4>
