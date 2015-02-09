@@ -1,0 +1,129 @@
+.container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  border: 1px dotted black;
+}
+.fixedcontainer {
+  margin: 20px auto;
+  width: 400px;
+  height: 250px;
+  padding: 0px 20px 20px 20px;
+  border: 1px solid black;
+  background-color: white;
+}
+
+th {
+  text-align: left;
+}
+
+.login {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	display: block;
+}
+#submit {
+	float: right;
+}
+#register{
+	margin-top: 60px;
+	line-height: 0;
+	display:block;
+}
+#register a:visited{
+	color: blue;
+}
+#register a{
+	color: blue;
+	text-decoration: none;
+}
+#register a:hover{
+	color: blue;
+	text-decoration: underline;
+}
+.dropdownleft {
+	float:left;
+	display: inline-block;
+
+}
+.dropdownright {
+	float:right;
+	display: inline-block;
+
+}
+
+.containerauto {
+  margin: 20px auto;
+  width: 500px;
+  height: 230px;
+  min-height: 200px;
+  padding: 0px 20px 20px 20px;
+  border: 1px solid black;
+  min-width: 500px;
+  background-color: white;
+  opacity: 5;
+}
+#go {
+	float:right;
+	margin-top:20px;
+	display: inline-block;
+}
+
+.containerhidden {
+  margin: 20px auto;
+  width: 540px;
+  height: auto;
+  padding: 0px 20px 20px 20px;
+  text-align: center;
+  min-width: 530px;
+}
+.hidden {
+	border: 1px solid black;
+	background-color: white;
+}
+.loginbutton {
+	float: right;
+	text-align: right;
+}
+a {
+	color: blue;
+	text-decoration: none;
+}
+a:visited {
+	color: blue;
+}
+a:hover {
+	box-shadow: 0px 0px 20px 10px lightblue;
+}
+.header {
+  margin: 20px auto;
+  width: 500px;
+	height: 40px;
+	padding: 0px 20px 20px 20px;
+  border: 1px solid black;
+  line-height: 0;
+  min-width: 500px;
+  background-color: white;
+  font-family: Pacifico;
+}
+#page {
+	min-width: 700px;
+	width: 60%;
+	padding: 20px 0px 20px 0px;
+	border: 2px solid black;
+	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: grey;
+	opacity: 0.7;
+	font-weight: bold;
+	font-family: PT Serif;
+}
+html {
+	background-image: url("http://www.hdwallpapersinn.com/wp-content/uploads/2014/09/golden_gate_bridge_great_sea_wallpaper.jpg");
+}
+#chewy {
+	font-family: Chewy;
+}
+
