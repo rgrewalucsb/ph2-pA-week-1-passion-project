@@ -3,9 +3,13 @@
 The first passion project should include technologies and competencies discussed in p1-p5
 
 Portfolio 1: Sinatra RESTful CRUD
+
 Portfolio 2: Active Record
+
 Portfolio 3: Authentication And Authorization
+
 Portfolio 4: HTML and CSS
+
 Portfolio 5: Validations and Errors
 
 ## BART Station ETA - Passion Project A
@@ -23,7 +27,11 @@ Portfolio 5: Validations and Errors
 ## P1 - P5 Technology Implimented
 
 P1 - All my CRUD routes are pretty damn RESTful
+
 P2 - Built the Users and Stations using Active Record, the actual eta data is from the BART API, which by the way has horrible documentation.
+
 P3 - A user can register and login in order to save their favorite station and destination.
+
 P4 - Used a wide array of HTML/ CSS to get the page looking nice. Using conditionals in erb to only show divs when they have data is an awesome tool.
+
 P5 - Created validations for user registration and login; seperate error messages are displayed to the user depending on the validation. Also modified the show_exception error, in order to tell the user if there are no matching trains headed in his direction.
