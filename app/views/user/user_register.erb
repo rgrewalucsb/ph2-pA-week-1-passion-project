@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
 <div id="page">
   <div class="header"> 
   <h4><a class="loginbutton" href="/">back</a></h4>
   <br>
   <h4><a class="loginbutton" href="/login">login</a></h4>
   </div>
+
 	<div class="fixedcontainer">
 		<h1>Register</h1>
 	  <hr>
+    
   	<div class='login'>
   	<form action='/register' method='post'>
     	<h4>Username: <input type='text' size='30' name='user[username]' placeholder="John Doe"></h4>
@@ -16,10 +16,10 @@
     	<h4 id='submit'><input type='submit' value='Submit'></h4>
   	</form>
       <% if session[:errors] %>
+      
       <span style="color:red"><%= session[:errors][:username].first %></span>
       <%session[:errors] = nil%>
       <% end %>
   	</div>
 	</div>
 </div>
-</html>

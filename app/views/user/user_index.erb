@@ -1,80 +1,84 @@
 <div id="page">
-<div class="header"> 
-  <h2 id="user">Hello, <%= @user.username  %>!</h2>
-  <h4><a class="loginbutton" href="/logout">logout</a></h4>
-</div>
-<div class="containerauto">
-  <h1 id="chewy">BART: Estimated Time of Arrival</h1>
-  <hr>
-  <form method="post" action="/user/eta">
-    <span class="dropdownleft">
-    <h3>Station: </h3>
 
-    <select name="station">
-          <option value="<%=@user.station %>">
-            <%=@user.station %>
-          </option>
-        <% @stations.each do |station| %>
-          <option value="<%=station.abbr %>">
-            <%=station.abbr %> - <%= station.name %>
-          </option>
+  <div class="header"> 
+    <h2 id="user">Hello, <%= @user.username  %>!</h2>
+    <h4><a class="loginbutton" href="/logout">logout</a></h4>
+  </div>
+
+  <div class="containerauto">
+    <h1 id="chewy">BART: Estimated Time of Arrival</h1>
+    <hr>
+    <form method="post" action="/user/eta">
+      
+      <span class="dropdownleft">
+      <h3>Station: </h3>
+      <select name="station">
+            <option value="<%=@user.station %>">
+              <%=@user.station %>
+            </option>
+          <% @stations.each do |station| %>
+            <option value="<%=station.abbr %>">
+              <%=station.abbr %> - <%= station.name %>
+            </option>
+          <% end %>
+      </select>
+      </span>
+
+      <span class="dropdownright">
+      <h3>Destination: </h3>
+      <select name="destination">
+            <option value="<%=@user.destination %>">
+              <%=@user.destination %>
+            </option>
+            <option value="<%=@da.abbr %>">
+              <%=@da.abbr %> - <%= @da.name %>
+            </option>
+            <option value="<%=@du.abbr %>">
+              <%=@du.abbr %> - <%= @du.name %>
+            </option>
+            <option value="<%=@fr.abbr %>">
+              <%=@fr.abbr %> - <%= @fr.name %>
+            </option>                    
+            <option value="<%=@ml.abbr %>">
+              <%=@ml.abbr %> - <%= @ml.name %>
+            </option>
+            <option value="<%=@pt.abbr %>">
+              <%=@pt.abbr %> - <%= @pt.name %>
+            </option>
+            <option value="<%=@rd.abbr %>">
+              <%=@rd.abbr %> - <%= @rd.name %>
+            </option>
+      </select>
+      </span>
+
+      <h4 id='go'>Save My Preferences: 
+  			<input type="radio" name="remember" value="<%=true%>"> Yes
+  			<input type="radio" name="remember" value="<%=false%>"> No
+
+  			<input type="submit" value='Submit'></h4>
+    </form>
+  </div>
+
+  <div class="containerhidden">
+        <% if session[:error] %>
+        <div class="hidden">
+          <h4 style="color:red"><%= session[:error] %></h4>
+        </div>
+          <%session[:error] = nil%>
         <% end %>
-    </select>
-    </span>
-    <span class="dropdownright">
-    <h3>Destination: </h3>
-    <select name="destination">
-          <option value="<%=@user.destination %>">
-            <%=@user.destination %>
-          </option>
-          <option value="<%=@da.abbr %>">
-            <%=@da.abbr %> - <%= @da.name %>
-          </option>
-          <option value="<%=@du.abbr %>">
-            <%=@du.abbr %> - <%= @du.name %>
-          </option>
-          <option value="<%=@fr.abbr %>">
-            <%=@fr.abbr %> - <%= @fr.name %>
-          </option>                    
-          <option value="<%=@ml.abbr %>">
-            <%=@ml.abbr %> - <%= @ml.name %>
-          </option>
-          <option value="<%=@pt.abbr %>">
-            <%=@pt.abbr %> - <%= @pt.name %>
-          </option>
-          <option value="<%=@rd.abbr %>">
-            <%=@rd.abbr %> - <%= @rd.name %>
-          </option>
-    </select>
-    </span>
+    <% if session[:eta] %>
+    <%session[:eta].each do |eta| %>
 
-    <h4 id='go'>Save My Preferences: 
-			<input type="radio" name="remember" value="<%=true%>"> Yes
-			<input type="radio" name="remember" value="<%=false%>"> No
-
-			<input type="submit" value='Submit'></h4>
-  </form>
-</div>
-<div class="containerhidden">
-      <% if session[:error] %>
       <div class="hidden">
-        <h4 style="color:red"><%= session[:error] %></h4>
+        <h3>Station: <%=session[:station] %>  Destination: <%= session[:destination] %> </h3>
+        <h4><%= eta[:length] %> car train leaves for your destination in <%= eta[:minutes] %> minutes</h4>
       </div>
-        <%session[:error] = nil%>
-      <% end %>
-  <% if session[:eta] %>
-  <%session[:eta].each do |eta| %>
 
-    <div class="hidden">
-      <h3>Station: <%=session[:station] %>  Destination: <%= session[:destination] %> </h3>
-      <h4><%= eta[:length] %> car train leaves for your destination in <%= eta[:minutes] %> minutes</h4>
-    </div>
-  <% end %>
-      <%= session[:eta] = nil %>
-      <%= session[:station] = nil %>
-      <%= session[:destination] = nil %>
-      <%= session[:remember] %>
-  <% end %>
-
-</div>
+    <% end %>
+        <%= session[:eta] = nil %>
+        <%= session[:station] = nil %>
+        <%= session[:destination] = nil %>
+        <%= session[:remember] %>
+    <% end %>
+  </div>
 </div>

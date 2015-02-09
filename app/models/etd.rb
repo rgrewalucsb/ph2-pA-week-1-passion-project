@@ -24,7 +24,7 @@ module Bart
 		doc = Hash.from_xml(xml)
 		
 		response = BartResponse.new
-		response.station = BStation.from_hash(doc)
+		response.station = Station.from_hash(doc)
 		
 		response.destinations = doc['root']['station']['etd'].map { |d| Destination.from_hash(d) }
 
@@ -35,13 +35,14 @@ module Bart
 	BartResponse = Struct.new(:station, :destinations)
 
 
-	BStation = Struct.new(:name, :abbr) do
+	Station = Struct.new(:name, :abbr) do
 		def self.from_hash(hash)
 			name = hash['root']['station']['name']
 			abbr = hash['root']['station']['abbr']
 			self.new(name, abbr)
 		end
 	end
+
 
 	Destination = Struct.new(:name, :abbr, :estimates) do
 		def self.from_hash(hash)
@@ -58,6 +59,7 @@ module Bart
 			dest
 		end
 	end
+
 
 	Estimate = Struct.new(:minutes, :platform, :direction, :length, :color) do
 		def self.from_hash(hash)

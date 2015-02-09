@@ -1,5 +1,4 @@
 enable :sessions
-# disable  :show_exceptions
 
 get '/' do
   redirect '/user' if session[:user_id]
@@ -12,6 +11,7 @@ get '/' do
   @stations = Station.all
   erb :index
 end
+
 
 post '/eta' do
   session[:station] = params[:station]
@@ -37,11 +37,11 @@ post '/eta' do
 end
 
 
-
 get '/login'  do
 	redirect '/user' if session[:user_id]
   erb :'/user/user_login'
 end
+
 
 post '/login' do
 	user = User.find_by(username: params[:username])
@@ -58,11 +58,11 @@ post '/login' do
   end
 end
 
+
 get "/register" do
 	redirect '/user' if session[:user_id]
   erb :'/user/user_register'
 end
-
 
 
 post "/register" do
@@ -91,6 +91,7 @@ get '/user' do
     redirect '/'
   end
 end
+
 
 post '/user/eta' do
   if session[:user_id]
@@ -139,7 +140,8 @@ not_found do
   request.path
 end
 
+
 error do
-  session[:error] = "The Station you Entered Does NOT have a Train going to that Destination!"
+  session[:error] = "The Station you Entered Does NOT have any Trains going to that Destination!"
   redirect '/'
 end
