@@ -8,7 +8,10 @@
   margin: 10px auto;
   margin-bottom: 40px;
   width: 500px;
+  min-width: 500px;
+  max-width: 505px;
   height: 250px;
+  max-height: 255px;
   min-height: 250px;
   padding: 0px 20px 20px 20px;
   border: 1px solid black;
@@ -59,11 +62,13 @@ th {
 .containerauto {
   margin: 10px auto;
   width: 500px;
+  min-width: 500px;
+  max-width: 505px;
   height: 250px;
   min-height: 250px;
+  max-height: 255px;
   padding: 0px 20px 20px 20px;
   border: 1px solid black;
-  min-width: 500px;
   background-color: white;
   border-radius: 5px;
 }
@@ -76,10 +81,12 @@ th {
 .containerhidden {
   margin: 10px auto;
   width: 540px;
+  min-width: 540px;
+  max-width: 550px;
   height: auto;
   padding: 0px 20px 20px 20px;
   text-align: center;
-  min-width: 530px;
+
 }
 .hidden {
 	border: 1px solid black;
@@ -104,12 +111,15 @@ a:hover {
 .header {
   margin: 10px auto;
   width: 500px;
+  min-width: 500px;
+  max-width: 505px;
 	height: 40px;
+	max-height:42px;
+	min-height: 40px;
 	padding: 0px 20px 20px 20px;
   border: 1px solid black;
   border-radius: 5px;
   line-height: 0;
-  min-width: 500px;
   background-color: white;
   font-family: Pacifico;
 }
