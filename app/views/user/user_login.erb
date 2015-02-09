@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <div id="page">
+	<div class="header"> 
+  <h4><a class="loginbutton" href="/">back</a></h4>
+  <br>
+  <h4><a class="loginbutton" href="/register">register</a></h4>
+	</div>
 	<div class="fixedcontainer">
 	  <h1>Log in</h1>
 	  <hr>
 	  <div class='login'>
-	  	<% if session[:errors] %>
-      <p style="color:red">The username or password you entered is incorrect!</p>
-      <%session[:errors] = nil%>
-      <% end %>
 		  <form action="/login" method="post" >
 		    <h4>Username: <input type='text' size='30' name="username" placeholder="John Doe"></h4>
 		    <h4>Password: <input type='password' size='30' name="password" placeholder="*************"></h4>
 		    <h4 id='submit'><input type="submit"></h4>
 		  </form>
-
-		  
+		  <% if session[:errors] %>
+      <p style="color:red">The username or password you entered is incorrect!</p>
+      <%session[:errors] = nil%>
+      <% end %>
 		</div>
-		<div id='register'><h3><a href="/register">Register</a></h3></div>
-		<br>
   </div>
 </div>
 
